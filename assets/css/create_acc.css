@@ -1,0 +1,126 @@
+body {
+    display: block;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #494848;
+    /* margin: 0; Xóa khoảng cách giữa body và cạnh của trình duyệt */
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2em;
+    background-color: #171717;
+    border-radius: 25px;
+    transition: transform 0.4s ease-in-out; /* Chỉnh sửa hiệu ứng hover */
+    width: 400px;
+    max-width: 100%; /* Đảm bảo biểu mẫu không vượt quá kích thước màn hình */
+    margin: 0 auto; /* Canh giữa biểu mẫu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Đổ bóng cho biểu mẫu */
+}
+
+
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    width: 100%;
+}
+
+.field input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.field select {
+    /* Định dạng cho phần select */
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    cursor: pointer;
+    width: 100%;
+}
+
+.field select:hover {
+    background-color: #252525; /* Định dạng khi hover trên select */
+}
+
+.field select:focus {
+    border: 1px solid #252525; /* Định dạng khi select được focus */
+}
+
+.field select::after {
+    content: "\25BC"; /* Định dạng mũi tên drop-down của select */
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    color: #d3d3d3;
+    pointer-events: none;
+}
+
+.button1,
+.button2,
+.button3 {
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #252525;
+    color: white;
+    cursor: pointer;
+}
+
+.button1:hover,
+.button2:hover,
+.button3:hover {
+    background-color: black;
+    color: white;
+}
+
+.button2 {
+    margin-right: 0.5em;
+}
+
+.button3 {
+    margin-bottom: 3em;
+}
+
+.override {
+    border: 1px solid #000 !important;
+}
+
+/* Định dạng cho label */
+label {
+    color: white;
+    font-size: 0.9em;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s;
+}

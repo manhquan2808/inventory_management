@@ -1,0 +1,80 @@
+body {
+    display: block;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #494848;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /* Sử dụng font chung cho toàn bộ trang */
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #171717;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #252525;
+    /* Màu nền cho hàng chẵn */
+}
+
+/* tr:hover { */
+/* background-color: #ddd; */
+/* Màu nền khi hover */
+/* } */
+
+th {
+    background-color: black;
+    font-weight: bold;
+    color: white;
+}
+
+/* CSS cho nút "Cập Nhật" */
+.action a {
+    display: inline-block;
+    padding: 5px 10px;
+    /* Điều chỉnh lề để nút rộng hơn */
+    background-color: #0e0e0e;
+    /* Màu nền cho nút "Cập Nhật" */
+    color: white;
+    /* Màu chữ */
+    text-decoration: none;
+    /* Loại bỏ gạch chân trên liên kết */
+    border-radius: 5px;
+    /* Bo góc cho nút */
+    transition: background-color 0.3s;
+    /* Hiệu ứng khi hover */
+}
+
+.action a:hover {
+    background-color: red;
+    /* Màu nền khi hover */
+}
+
+/* CSS cho nút "Xóa" */
+.action a.delete {
+    background-color: #f44336;
+    /* Màu nền cho nút "Xóa" */
+}
+
+.action a.delete:hover {
+    background-color: #d32f2f;
+    /* Màu nền khi hover */
+}
