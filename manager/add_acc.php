@@ -234,7 +234,7 @@ if (isset($_POST["submit"])) {
                                     <select name="lvl1" id="lvl1" required>
                                         <option value="select">Chọn chức vụ</option>
                                         <?php
-                                        $select_roles = mysqli_query($conn, "SELECT * FROM `roles` where `nickname` like 'NV%'");
+                                        $select_roles = mysqli_query($conn, "SELECT * FROM `roles` where `nickname` like 'NV%NVL'");
                                         while ($row_roles = mysqli_fetch_assoc($select_roles)) {
                                             ?>
 

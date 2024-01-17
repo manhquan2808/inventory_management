@@ -64,13 +64,13 @@ if (!isset($_SESSION['manager_id'])) {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Account</h3>
+                        <h3 class="page-title mb-0 p-0">Tài Khoản</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Account</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Edit Account</li>
+                                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Danh sách tài khoản</li>
                                 </ol>
                             </nav>
                         </div>

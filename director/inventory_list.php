@@ -70,12 +70,8 @@ if (isset($_POST['submit'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/logo96x96.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>q
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
 </head>
 <style>
     .slc-ivn {
@@ -108,18 +104,7 @@ if (isset($_POST['submit'])) {
 </style>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <!-- <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div> -->
-    <!-- </div> -->
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
@@ -166,7 +151,7 @@ if (isset($_POST['submit'])) {
 
                                 <form method="POST">
 
-                                    <table class="table user-table">
+                                    <table class="table user-table" id="list">
                                         <thead>
                                             <tr style="text-align: center;">
                                                 <th>#</th>
@@ -175,9 +160,9 @@ if (isset($_POST['submit'])) {
                                                 <th class="border-top-0">Địa chỉ</th>
                                                 <!-- <th class="border-top-0">Trạng thái</th> -->
                                                 <th class="border-top-0">Sức chứa</th>
-                                                <th class="border-top-0">Thao tác</th>
+                                                <th class="border-top-0"></th>
                                             </tr>
-                                                <!-- <th class="border-top-0" colspan="2">Update</th> -->
+                                            <!-- <th class="border-top-0" colspan="2">Update</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -186,20 +171,11 @@ if (isset($_POST['submit'])) {
                                                 $remove = $_REQUEST['remove_employee_id'];
                                                 mysqli_query($conn, "DELETE FROM `employee` WHERE `employee`.`employee_id` = '$remove'");
                                             }
-                                            $result = mysqli_query($conn, "SELECT *, SUM(`shelves`.`capacity`) AS inventory_capacity, sum(`shelves`.`capacity`) as shelves_capacity, `inventory_details`.`employee_id` 
-                                                                        --      CASE
-                                                                        --     WHEN inventory_capacity > 0 THEN 'Còn trống'
-                                                                        --     WHEN inventory_capacity = 0 THEN 'Kho đầy'
-                                                                        --     ELSE 'The quantity is under 30'
-                                                                        -- END AS status_inventory  
-                                                                        FROM `inventory` 
-                                                                        join `shelves` on `inventory`.`inventory_id` = `shelves`.`inventory_id`
-                                                                        join `inventory_details` on `inventory_details`.`inventory_id` = `inventory`.`inventory_id`
-                                                                        -- join `inventory_details` on `inventory_details`.`employee_id` = `employee`.`employee_id`
-                                                                        -- where `inventory_details`.`employee_id` = '$id'
-                                                                        GROUP BY 
-                                                                       `inventory`.`inventory_id`,
-                                                                        `inventory`.`inventory_name` ");
+                                            $result = mysqli_query($conn, "SELECT `inventory`.`inventory_id`, `inventory`.`inventory_name`, `inventory`.`type_id`, `inventory`.`inventory_name`, SUM(`shelves`.`capacity`) as `quantity`, `inventory`.`address`
+                                                                            FROM `inventory`
+                                                                            JOIN `shelves` on `shelves`.`inventory_id` = `inventory`.`inventory_id`
+                                                                            where `inventory`.`type_id` = 1
+                                                                            GROUP By `inventory`.`inventory_name`");
 
                                             ?>
                                             <?php
@@ -218,13 +194,13 @@ if (isset($_POST['submit'])) {
                                                         <?php echo $row['inventory_name']; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['adress']; ?>
+                                                        <?php echo $row['address']; ?>
                                                     </td>
                                                     <!-- <td>
                                                         <?php //echo $row['status_inventory']; ?>
                                                     </td> -->
                                                     <td>
-                                                        <?php echo $row['shelves_capacity']; ?>
+                                                        <?php echo $row['quantity']; ?>
                                                     </td>
 
                                                     <!--select kệ giống select kho  -->
@@ -241,75 +217,23 @@ if (isset($_POST['submit'])) {
 
                                         </tbody>
                                     </table>
-                                    <div class="slc-ivn">
-                                        <!-- <select name="Inventory_name" id="Inventory_name" class="field">
-                                            <option value="" hidden>Choose Shelves</option>
-                                            <?php
-                                            // $Inventory_name = array();
 
-                                            // $query = "SELECT `Inventory`.`Inventory_id`, `Inventory`.`Inventory_name`, `shelves`.`shelves_name` FROM `Inventory`
-                                            //           join `shelves` on `inventory`.`inventory_id` = `shelves`.`inventory_id`";
-                                            // $result = mysqli_query($conn, $query);
-
-                                            // while ($row = mysqli_fetch_assoc($result)) {
-                                            //     echo '<option value="' . $row['`Inventory`.`Inventory_id`'] . '" >' . $row['Inventory_name'] . ' - ' . $row['shelves_name'] . '</option>';
-
-                                            // }
-
-                                            ?>
-                                        </select> -->
-                                    </div>
-                                    <!-- <div class="button1">
-                                        <input type="submit" class="submit button1" value="Nhập kho" name="submit"
-                                            style="background-color: #26c6da;
-                                                        color: #fff;
-                                                        padding: 12px 24px;
-                                                        border: none;
-                                                        border-radius: 25px;
-                                                        cursor: pointer;
-                                                        font-size: 16px;
-                                                    ">
-                                    </div> -->
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2023 Inventory Management by <a
+            <footer class="footer"> © 2023 Inventory Management by <a
                     href="https://github.com/manhquan2808/inventory">inventory_management </a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+            </footer>
+        </div>
+
+
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+
+
     <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

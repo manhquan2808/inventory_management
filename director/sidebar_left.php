@@ -28,11 +28,12 @@
                     <ul>
                         <li class="sidebar-item">
                             <a href="arrange_resource.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i><span class="hide-menu">Điều phối</span></a>
+                                    class="mdi me-2 mdi-rotate-3d"></i><span class="hide-menu">Điều phối</span></a>
                         </li>
                         <li class="sidebar-item">
                             <a href="inventory_list.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i><span class="hide-menu">Danh sách kho</span></a>
+                                    class="mdi me-2 mdi-format-list-bulleted"></i><span class="hide-menu">Danh sách
+                                    kho</span></a>
                         </li>
 
                     </ul>
@@ -40,35 +41,19 @@
 
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="add_resource.php" aria-expanded="false"><i class="mdi me-2 mdi-check-circle"></i><span
-                            class="hide-menu">Duyệt Xuất NVL</span></a>
+                            class="hide-menu">Duyệt Xuất
+                            NVL</span></a>
                 </li>
-                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                        aria-expanded="false"><i class="mdi me-2 mdi-material-ui"></i><span
-                            class="hide-menu">Duyệt Đơn</span></a>
-                    <ul>
-                        <li class="sidebar-item">
-                            <a href="arrange_resource.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i><span class="hide-menu">Nhập Nguyên Vật Liệu</span></a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="list_resource.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i> <span class="hide-menu">Xuất Nguyên Vật Liệu</span></a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="add_resource.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i> <span class="hide-menu">Nhập Thành Phẩm</span></a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="add_resource.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
-                                    class="mdi me-2 mdi-album"></i> <span class="hide-menu">Xuất Thành Phẩm</span></a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- Kiểm kê cho 1 roles mới -->
-                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="#" aria-expanded="false"><i class="mdi me-2 mdi-book-open-variant"></i><span
-                            class="hide-menu">Inventory Check</span></a>
-                </li> -->
+
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="inventory_check.php" aria-expanded="false"><i class="mdi me-2 mdi-table-edit"></i><span
+                            class="hide-menu">Kiểm Kê</span></a>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="static_resource.php" aria-expanded="false"><i class="mdi me-2 mdi-chart-bar"></i><span
+                            class="hide-menu">Thống Kê</span></a>
+                </li>
+
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                         aria-expanded="false"><i class="mdi me-2 mdi-file-document-box"></i><span class="hide-menu">Quản
                             Lý Phiếu NVL</span></a>
@@ -78,12 +63,58 @@
                                     class="mdi me-2 mdi-album"></i><span class="hide-menu">Nhập</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="list_acc.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
+                            <a href="issue_resource_ex.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
                                     class="mdi me-2 mdi-album"></i> <span class="hide-menu">Xuất</span></a>
                         </li>
                     </ul>
                 </li>
+                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                        aria-expanded="false">
+                        <i class="mdi me-2 mdi-cookie"></i><span class="hide-menu">Thành Phẩm</span></a>
+                    <ul>
+                        <li class="sidebar-item">
+                            <a href="arrange_product.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
+                                    class="mdi me-2 mdi-rotate-3d"></i><span class="hide-menu">Điều phối</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="inventory_list.php" class="sidebar-link waves-effect waves-dark sidebar-link"><i
+                                    class="mdi me-2 mdi-format-list-bulleted"></i><span class="hide-menu">Danh sách
+                                    kho</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="add_product.php" aria-expanded="false"><i
+                                    class="mdi me-2 mdi-check-circle"></i><span class="hide-menu">Duyệt Xuất
+                                    TP</span></a>
+                        </li>
 
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="inventory_check.php" aria-expanded="false"><i
+                                    class="mdi me-2 mdi-table-edit"></i><span class="hide-menu">Kiểm Kê</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="static_product.php" aria-expanded="false"><i
+                                    class="mdi me-2 mdi-chart-bar"></i><span class="hide-menu">Thống Kê</span></a>
+                        </li>
+
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                aria-expanded="false"><i class="mdi me-2 mdi-file-document-box"></i><span
+                                    class="hide-menu">Quản
+                                    Lý Phiếu TP</span></a>
+                            <ul>
+                                <li class="sidebar-item">
+                                    <a href="issue_product.php"
+                                        class="sidebar-link waves-effect waves-dark sidebar-link"><i
+                                            class="mdi me-2 mdi-album"></i><span class="hide-menu">Nhập</span></a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="issue_product_ex.php"
+                                        class="sidebar-link waves-effect waves-dark sidebar-link"><i
+                                            class="mdi me-2 mdi-album"></i> <span class="hide-menu">Xuất</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li> -->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                         aria-expanded="false"><i class="mdi me-2 mdi-clipboard-account"></i><span class="hide-menu">Tài
                             Khoản</span></a>

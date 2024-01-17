@@ -20,7 +20,7 @@ JOIN `shelves` on `shelves`.`shelves_id` = `issue_resources`.`shelves_id`
 JOIN `resource_detail` on `resource_detail`.`id` = `issue_resources`.`resource_detail_id`
 JOIN `resource` on `resource`.`resource_id` = `resource_detail`.`resource_id`
 JOIN `inventory` on `inventory`.`inventory_id` = `shelves`.`inventory_id`
-WHERE `inventory`.`inventory_id` = $inventory
+WHERE `inventory`.`inventory_id` = $inventory and `resource`.`status` = 'Đã lưu kho'
 GROUP BY `resource`.`resource_id`, `inventory`.`inventory_id`
 ORDER BY `resource`.`resource_name`");
 $row = mysqli_fetch_array($result);

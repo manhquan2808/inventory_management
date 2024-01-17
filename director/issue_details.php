@@ -5,7 +5,7 @@ if (isset($_POST['data'])) {
     $date = $_REQUEST['data'];
 
 
-    $select_issue = mysqli_query($conn, "SELECT DATE_FORMAT(`resource`.`expiration_time`, '%d %M %Y') as expiration_time, `resource`.`resource_name`, `resource`.`quantity`, `resource_detail`.`time` 
+    $select_issue = mysqli_query($conn, "SELECT DATE_FORMAT(`resource`.`expiration_time`, '%Y-%c-%d') as expiration_time, `resource`.`resource_name`, `resource`.`quantity`, `resource_detail`.`time` 
                                          FROM `resource_detail` 
                                          JOIN `resource` on `resource`.`resource_id` = `resource_detail`.`resource_id`                                                                     
                                          WHERE `resource_detail`.`time` = '$date' ");

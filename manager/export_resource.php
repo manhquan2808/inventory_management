@@ -24,13 +24,13 @@ $result = mysqli_query($conn, "SELECT `resource`.`resource_name`, `resource`.`qu
 if (isset($_POST['require'])) {
     $resource_id = $_POST['require'];
     $update_resource = mysqli_query($conn, "UPDATE `resource` set `status` = 'Yêu cầu xuất NVL' where `resource_id` = $resource_id");
-    if($update_resource === true){
+    if ($update_resource === true) {
         // echo "<script>alert('Yêu cầu thành công')</script>";
-        header ("location: ./export_resource.php");
-    }else{
+        header("location: ./export_resource.php");
+    } else {
         echo "<script>alert('Yêu cầu thất bại')</script>";
     }
-    
+
 }
 ?>
 <!DOCTYPE html>
@@ -216,40 +216,17 @@ if (isset($_POST['require'])) {
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
+            <footer class="footer"> © 2023 Inventory Management by <a
+                    href="https://github.com/manhquan2808/inventory">inventory_management </a>
+            </footer>
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2023 Inventory Management by <a
-                href="https://github.com/manhquan2808/inventory">inventory_management </a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+
+
+
     <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

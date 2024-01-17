@@ -23,44 +23,16 @@ if (isset($_POST['submit'])) {
 
     if (count($check_box) > 0) {
         foreach ($check_box as $key => $value) {
-            $update_status_ex = mysqli_query($conn, "UPDATE `resource` set `status` = 'Chấp nhận xuất NVL' where `resource_id` = $value");
+            $update_status_ex = mysqli_query($conn, "UPDATE `resource` set `status` = 'Xuất NVL', `update_time` = NOW() where `resource_id` = $value");
             // $update_status_ex = mysqli_query($conn, "UPDATE `resource` SET `status` = 'Yêu cầu xuất' where `resource_id` = $value");
+            // $update_capacity = mysqli_query($conn, "");
+
         }
     }
 } else {
     // echo "<script>alert('Thất bại')</script>";
 }
 
-// if (isset($_POST['submit'])) {
-
-
-//     $resource_name = mysqli_escape_string($conn, $_POST['resource_name']);
-//     $quantity = mysqli_escape_string($conn, $_POST['quantity']);
-//     // $Inventory_name = mysqli_escape_string($conn, $_POST['Inventory_name']);
-//     if (empty($resource_name) || empty($quantity)) {
-//         echo
-//             "<script>
-//                 alert ('Nhập đầy đủ thông tin');
-//             </script>";
-//     } else {
-//         if (
-//             mysqli_query($conn, "INSERT INTO `resource`(`resource_name`, `quantity`, `status`,`expiration_time`) 
-//             VALUES ('$resource_name',$quantity, 'Require' ,DATE_ADD(CURDATE(),INTERVAL 365 DAY))")
-//         ) {
-//             echo "<script>
-//                         alert('Thêm thành công');
-//                     </script>";
-//             // header("location:?action=done");
-//         } else {
-//             // Handle the error if the first INSERT query fails.
-//             echo 'Có lỗi xảy ra';
-//         }
-//     }
-// }
-// if (isset($_POST['submit1'])) {
-//     header("location:list_resource.php");
-// }
-// unset($_REQUEST);
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -260,15 +232,15 @@ if (isset($_POST['submit'])) {
                                         <option value="" hidden>Choose Resource</option>
                                         <?php
                                         // $resource_name = array();
-
+                                        
                                         // $query = "SELECT resource_id, resource_name FROM `resource` ";
                                         // $result = mysqli_query($conn, $query);
-
+                                        
                                         // while ($row = mysqli_fetch_assoc($result)) {
                                         //     array_push($resource_name, $row["resource_name"]);
                                         //     //
                                         //     $result_rc = array_unique($resource_name);
-
+                                        
                                         // }
                                         // foreach ($result_rc as $key => $value) {
                                         //     echo '<option value="' . $value . '" >' . $value . '</option>';
@@ -302,16 +274,16 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-
+            <footer class="footer"> © 2023 Inventory Management by <a
+                    href="https://github.com/manhquan2808/inventory">inventory_management </a>
+            </footer>
         </div>
 
-        <footer class="footer"> © 2023 Inventory Management by <a
-                    href="https://github.com/manhquan2808/inventory">inventory_management </a>
-        </footer>
+
 
     </div>
 
-    </div>
+
 
     <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -338,12 +310,12 @@ if (isset($_POST['submit'])) {
     $(document).ready(function () {
 
     });
-    
+
     // console.log(lvl1_id)
     $(document).on("change", "#lvl1", function (e) {
         e.preventDefault();
 
-     
+
 
 
         $.ajax({

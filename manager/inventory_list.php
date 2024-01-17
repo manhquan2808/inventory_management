@@ -177,7 +177,7 @@ if (isset($_POST['submit'])) {
                                                 <th class="border-top-0">Sức chứa</th>
                                                 <th class="border-top-0"></th>
                                             </tr>
-                                                <!-- <th class="border-top-0" colspan="2">Update</th> -->
+                                            <!-- <th class="border-top-0" colspan="2">Update</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -227,16 +227,16 @@ if (isset($_POST['submit'])) {
                                             <option value="" hidden>Choose Shelves</option>
                                             <?php
                                             // $Inventory_name = array();
-
+                                            
                                             // $query = "SELECT `Inventory`.`Inventory_id`, `Inventory`.`Inventory_name`, `shelves`.`shelves_name` FROM `Inventory`
                                             //           join `shelves` on `inventory`.`inventory_id` = `shelves`.`inventory_id`";
                                             // $result = mysqli_query($conn, $query);
-
+                                            
                                             // while ($row = mysqli_fetch_assoc($result)) {
                                             //     echo '<option value="' . $row['`Inventory`.`Inventory_id`'] . '" >' . $row['Inventory_name'] . ' - ' . $row['shelves_name'] . '</option>';
-
+                                            
                                             // }
-
+                                            
                                             ?>
                                         </select> -->
                                     </div>
@@ -257,40 +257,15 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2023 Inventory Management by <a
+
+            <footer class="footer"> © 2023 Inventory Management by <a
                     href="https://github.com/manhquan2808/inventory">inventory_management </a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+            </footer>
+        </div>
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+
+
     <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

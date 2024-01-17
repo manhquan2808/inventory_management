@@ -28,8 +28,8 @@ if (!isset($_SESSION['product_manager_id'])) {
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="../manager/css/style.min.css" rel="stylesheet">
-   
+    <link href="css/style.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -51,10 +51,10 @@ if (!isset($_SESSION['product_manager_id'])) {
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <?php
-        include '../manager/header.php';
-        include '../manager/sidebar_left.php';
+        include './header.php';
+        include './sidebar_left.php';
         ?>
-        
+
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -62,13 +62,13 @@ if (!isset($_SESSION['product_manager_id'])) {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Resource</h3>
+                        <h3 class="page-title mb-0 p-0">Thành Phẩm</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Product</li>
-                                    <li class="breadcrumb-item active" aria-current="page">List Product</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Thành Phẩm</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Danh sách thành phẩm</li>
                                 </ol>
                             </nav>
                         </div>
@@ -94,77 +94,82 @@ if (!isset($_SESSION['product_manager_id'])) {
                                 <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
 
                                 <!-- <table class="table user-table"> -->
-                                    <form method="POST">
-                                        <!-- <h4 class="card-title">Basic Table</h4> -->
-                                        <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
+                                <form method="POST">
+                                    <!-- <h4 class="card-title">Basic Table</h4> -->
+                                    <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
 
-                                        <?php
-                                        if (isset($_REQUEST['remove_product_id'])) {
-                                            $remove = $_REQUEST['remove_product_id'];
-                                            mysqli_query($conn, "DELETE FROM `products` WHERE `products`.`product_id` = '$remove'");
-                                        }
-                                        $result = mysqli_query($conn, "SELECT * FROM `products` "); 
-                                        // $result = mysqli_query($conn, "SELECT resource_id, `resource_name`, `status`, SUM(quantity) as quantity  
-                                        // FROM `resource` 
-                                        // WHERE (`resource_name` = '213' OR `resource_name` = 'a') 
-                                        // AND `status` = 'Require'
-                                        // GROUP BY `resource_name`, `status`; "); ?>
-                                        <table class="table user-table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-top-0">Prouct Name</th>
-                                                    <th class="border-top-0">Description</th>
-                                                    <th class="border-top-0">Quantity</th>
-                                                    <th class="border-top-0">Price</th>
-                                                    <th class="border-top-0">Status</th>
-                                                    
-                                                    <th class="border-top-0">Created</th>
-                                                    <th class="border-top-0">Update</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                    ?>
-                                                    <tr class="action">
-                                                        <td style="text-align: center;">
-                                                            <!-- // <th colspan='2'>Update</th> -->
-                                                            <?php echo $row['product_name']; ?>
+                                    <?php
+                                    if (isset($_REQUEST['remove_product_id'])) {
+                                        $remove = $_REQUEST['remove_product_id'];
+                                        mysqli_query($conn, "DELETE FROM `products` WHERE `products`.`product_id` = '$remove'");
+                                    }
+                                    $result = mysqli_query($conn, "SELECT * FROM `products` ");
+                                    // $result = mysqli_query($conn, "SELECT resource_id, `resource_name`, `status`, SUM(quantity) as quantity  
+                                    // FROM `resource` 
+                                    // WHERE (`resource_name` = '213' OR `resource_name` = 'a') 
+                                    // AND `status` = 'Require'
+                                    // GROUP BY `resource_name`, `status`; "); ?>
+                                    <table class="table user-table">
+                                        <thead style="text-align: center;">
+                                            <tr>
+                                                <th class="border-top-0">#</th>
+                                                <th class="border-top-0">Tên thành phẩm</th>
+                                                <th class="border-top-0">Mô tả</th>
+                                                <th class="border-top-0">Số lượng</th>
+                                                <th class="border-top-0">Giá</th>
+                                                <th class="border-top-0">Trạng thái</th>
 
-                                                        </td>
-                                                        <td style="text-align: center;">
-                                                            <?php echo $row['description']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $row['quantity']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $row['price']; ?>
-                                                        </td>
-                                                        <td>
+                                                <th class="border-top-0">NSX</th>
+                                                <th class="border-top-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $count = 1;
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr class="action" style="text-align: center;">
+                                                    <td>
+                                                        <?php echo $count++; ?>
+                                                    </td>
+                                                    <td>
+                                                        <!-- // <th colspan='2'>Update</th> -->
+                                                        <?php echo $row['product_name']; ?>
+
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['description']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['quantity']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['price']; ?>
+                                                    </td>
+                                                    <td>
                                                         <?php echo $row['status']; ?>
-                                                        </td>
-                                                        <td>
+                                                    </td>
+                                                    <td>
                                                         <?php echo $row['created_date']; ?>
-                                                        </td>
-                                                        <!-- <td style="width: 13%; text-align: center;">
+                                                    </td>
+                                                    <!-- <td style="width: 13%; text-align: center;">
                                                             <a
                                                                 href="./edit_acc.php?resource_id=<?php // echo $row['resource_id'] ?>&director_id=<?php //echo $_SESSION['director_id'] ?>">
                                                                 Cập Nhật
                                                             </a>
                                                         </td> -->
-                                                        <td style="width: 5%; text-align: center;">
-                                                            <a href="?remove_product_id=<?php echo $row['product_id']; ?>"
-                                                                onclick="return confirm('Are You Sure?')">
-                                                                Xóa
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
+                                                    <td style="width: 5%; text-align: center;">
+                                                        <a href="?remove_product_id=<?php echo $row['product_id']; ?>"
+                                                            onclick="return confirm('Are You Sure?')">
+                                                            Xóa
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
 
-                                            </tbody>
-                                        </table>
-                                    </form>
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
                         </div>
                     </div>

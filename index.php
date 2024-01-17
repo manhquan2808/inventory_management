@@ -8,8 +8,8 @@ if (isset($_SESSION['employee_id'])) {
 } elseif (isset($_SESSION['manager_id'])) {
   header("location:./manager/index.php");
   exit();
-} elseif (isset($_SESSION['sale_id'])) {
-  header("location:./sale.php");
+} elseif (isset($_SESSION['inventory_check_id'])) {
+  header("location:./inventory_check/index.php");
   exit();
 } elseif (isset($_SESSION['nvl_id'])) {
   header("location:./resource_department.php");
@@ -19,6 +19,9 @@ if (isset($_SESSION['employee_id'])) {
   exit();
 }elseif (isset($_SESSION['product_manager_id'])) {
   header("location:./product_manager/index.php");
+  exit();
+}elseif (isset($_SESSION['employee_product_id'])) {
+  header("location:./employee_inventory_product/index.php");
   exit();
 }
 ?>
@@ -41,7 +44,7 @@ if (isset($_POST["submit"])) {
     if (mysqli_num_rows($query) > 0) { // Kiểm tra dữ liệu có hay không
       $row = mysqli_fetch_assoc($query); // Lưu dữ liệu dưới dạng object
       if (password_verify($password, $row['password'])) {
-        if ($row['nickname'] === 'NVK') {
+        if ($row['nickname'] === 'NVK_NVL') {
           $_SESSION['employee_id'] = $row['employee_id'];
           header('location:employee_inventory');
         } elseif ($row['nickname'] === 'QL_NVL') {
@@ -56,6 +59,12 @@ if (isset($_POST["submit"])) {
         }elseif ($row['nickname'] === 'QL_TP') {
           $_SESSION['product_manager_id'] = $row['employee_id'];
           header('location:product_manager');
+        }elseif ($row['nickname'] === 'NVKK_NVL') {
+          $_SESSION['inventory_check_id'] = $row['employee_id'];
+          header('location:inventory_check');
+        }elseif ($row['nickname'] === 'NVK_TP') {
+          $_SESSION['employee_product_id'] = $row['employee_id'];
+          header('location:employee_inventory_product');
         }
       } else {
         echo '<script>
@@ -294,7 +303,7 @@ if (isset($_POST["submit"])) {
       <input class="button1" type="submit" name="submit" value="Login"></input>
     </div>
     <!-- <button class="button3" >Forgot Password</button> -->
-    <input class="button3" type="submit" name="password-reset-token" value="Forgot Password"></input>
+    <!-- <input class="button3" type="submit" name="password-reset-token" value="Forgot Password"></input> -->
 
   </form>
 

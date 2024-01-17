@@ -12,44 +12,39 @@ if (!isset($_SESSION['product_manager_id'])) {
 ?>
 <?php
 
-switch(isset($_POST['submit']))
-	{
-		case 'Submit':
-		{	
-				
-				$status =  $_POST['txtsta'];
-				$name = $_REQUEST['txtname'];
-				$des = $_REQUEST['txtdes'];
-				$price = $_REQUEST['txtprice'];
-				$quantity= $_REQUEST['txtquan'];
-                $currentDateTime = date('Y-m-d H:i:s');
-        if (empty($name) || empty($status) || empty($des) || empty($price) || empty($quantity)) {
-                    echo
-                        "<script>
+switch (isset($_POST['submit'])) {
+    case 'Submit': {
+
+            // $status =  $_POST['txtsta'];
+            $name = $_REQUEST['txtname'];
+            $des = $_REQUEST['txtdes'];
+            $price = $_REQUEST['txtprice'];
+            // $quantity= $_REQUEST['txtquan'];
+            $currentDateTime = date('Y-m-d H:i:s');
+            if (empty($name) || empty($des) || empty($price)) {
+                echo
+                    "<script>
                             alert ('Nhập đầy đủ thông tin');
                         </script>";
-                } 
-
-       else { 
-        if(mysqli_query($conn, "INSERT INTO products(`product_id` ,`product_name`, `description`, `quantity`, `price`, `status`, `created_date`, `expiration_date`)
+            } else {
+                if (
+                    mysqli_query($conn, "INSERT INTO products(`product_id` ,`product_name`, `description`, `quantity`, `price`, `status`, `created_date`, `expiration_date`)
         values 
-        (NULL,'$name','$des','$quantity','$price','$status',DATE_ADD(CURDATE(),INTERVAL 365 DAY),'$currentDateTime')"))
-					{
-						echo'<script>
+        (NULL,'$name','$des',0,'$price','Thành phẩm mới',DATE_ADD(CURDATE(),INTERVAL 365 DAY),'$currentDateTime')")
+                ) {
+                    echo '<script>
 							alert("Thêm thành công");
 							</script>';
-					
-							
-					}
-					else
-					{
-						echo'Thêm thất bại'. $conn->error;	
-					}
+
+
+                } else {
+                    echo 'Thêm thất bại' . $conn->error;
+                }
             }
-			break;	
-		}
-    
-	}
+            break;
+        }
+
+}
 if (isset($_POST['submit1'])) {
     header("location:list_product.php");
 }
@@ -74,7 +69,7 @@ unset($_REQUEST);
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="../manager/css/style.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -84,6 +79,12 @@ unset($_REQUEST);
 </head>
 <style>
     /* CSS cho form Create Account */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
     .form {
         width: 1200px;
     }
@@ -167,8 +168,8 @@ unset($_REQUEST);
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <?php
-        include '../manager/header.php';
-        include '../manager/sidebar_left.php';
+        include './header.php';
+        include './sidebar_left.php';
         ?>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -189,13 +190,13 @@ unset($_REQUEST);
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Product</h3>
+                        <h3 class="page-title mb-0 p-0">Thành Phẩm</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Product</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Thành Phẩm</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Thêm Thành Phẩm</li>
                                 </ol>
                             </nav>
                         </div>
@@ -221,48 +222,49 @@ unset($_REQUEST);
             <input type="text" name="resource_name" id="resource_name"><br><br>
         </div> -->
                                 <div class="error">
-                                <label>Product Name</label>
-                                <input type="text" name="txtname" class="input-field" id="txtname"><br><br>
+                                    <label>Tên sản phẩm</label>
+                                    <input type="text" name="txtname" class="input-field" id="txtname"><br><br>
                                 </div>
-                                
+
                                 </select>
                                 <div class="error">
-                                    <label>Description</label>
-                                    <textarea name="txtdes" id="txtdes" cols="67" rows="5" class="input-field"></textarea><br><br>
+                                    <label>Mô tả</label>
+                                    <textarea name="txtdes" id="txtdes" cols="67" rows="5"
+                                        class="input-field"></textarea><br><br>
                                 </div>
-                                <div class="error">
+                                <!-- <div class="error">
                                     <label>Quantity</label>
                                     <input type="number" name="txtquan" class="input-field" id="txtquan"><br><br>
-                                </div>
+                                </div> -->
 
                                 <div class="error">
-                                <label>Price</label>
-                                <input type="number" name="txtprice" class="input-field" id="txtprice"><br><br>
+                                    <label>Giá</label>
+                                    <input type="number" name="txtprice" class="input-field" id="txtprice"><br><br>
                                 </div>
 
-                                <div class="error">
+                                <!-- <div class="error">
                                 <label>Status</label>
                                 
                                 <select name="txtsta" id="txtsta">
                                     <option value="" hidden>Choose Resource</option>
                                     <?php
-                                    $status = array();
-
-                                    $query = "SELECT product_id, status FROM `products`";
-                                    $result = mysqli_query($conn, $query);
-
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        array_push($status, $row["status"]);
-                                        //
-                                        $result_rc = array_unique($status);
-
-                                    }
-                                    foreach ($result_rc as $key => $value) {
-                                        echo '<option value="' . $value . '" >' . $value . '</option>';
-                                    }
+                                    // $status = array();
+                                    
+                                    // $query = "SELECT product_id, status FROM `products`";
+                                    // $result = mysqli_query($conn, $query);
+                                    
+                                    // while ($row = mysqli_fetch_assoc($result)) {
+                                    //     array_push($status, $row["status"]);
+                                    //     //
+                                    //     $result_rc = array_unique($status);
+                                    
+                                    // }
+                                    // foreach ($result_rc as $key => $value) {
+                                    //     echo '<option value="' . $value . '" >' . $value . '</option>';
+                                    // }
                                     ?>
                                 </select>
-                                </div>
+                                </div> -->
                                 <!-- <div>
             <label>Inventory Name</label>
             <select name="Inventory_name" id="Inventory_name">
@@ -303,11 +305,11 @@ unset($_REQUEST);
         </div> -->
                                 <div class="button1">
                                     <input type="submit" id="submit" class="submit button1" name="submit"
-                                        value="Submit">
+                                        value="Thêm Thành Phẩm">
                                 </div>
                                 <div class="button1">
                                     <input type="submit" id="submit1" name="submit1" class="submit button1"
-                                        value="View List">
+                                        value="Xem Danh Sách">
                                 </div>
 
                             </form>

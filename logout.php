@@ -14,40 +14,46 @@ if ($id) {
         if ($_SESSION['manager_id'] === $id) {
             unset($_SESSION['manager_id']);
             header('location:./');
-            
-        }
-        
 
-    } elseif (isset($_SESSION['sale_id'])) {
-        if ($_SESSION['sale_id'] === $id) {
-            unset($_SESSION['sale_id']);
+        }
+
+
+    } elseif (isset($_SESSION['inventory_check_id'])) {
+        if ($_SESSION['inventory_check_id'] === $id) {
+            unset($_SESSION['inventory_check_id']);
             header('location:./');
-            
+
         }
     } elseif (isset($_SESSION['nvl_id'])) {
         if ($_SESSION['nvl_id'] === $id) {
-            unset($_SESSION['nvl_id']); 
+            unset($_SESSION['nvl_id']);
             header('location:./');
-            
+
         }
 
     } elseif (isset($_SESSION['director_id'])) {
         if ($_SESSION['director_id'] === $id) {
             unset($_SESSION['director_id']);
             header('location:./');
-            
+
         }
     } elseif (isset($_SESSION['resource_supplier_id'])) {
         if ($_SESSION['resource_supplier_id'] === $id) {
             unset($_SESSION['resource_supplier_id']);
             header('location:./');
-            
+
         }
     } else if (isset($_SESSION['product_manager_id'])) {
         if ($_SESSION['product_manager_id'] === $id) {
             unset($_SESSION['product_manager_id']);
             header('location:./');
-            
+
+        }
+    } else if (isset($_SESSION['employee_product_id'])) {
+        if ($_SESSION['employee_product_id'] === $id) {
+            unset($_SESSION['employee_product_id']);
+            header('location:./');
+
         }
     }
 } else {
