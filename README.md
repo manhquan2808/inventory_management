@@ -2,57 +2,40 @@
 
 ## Project Description
 
-The "Warehouse Management System" is a web application designed to manage and track warehouses, shelves, and types of goods within the warehouse system. The system supports multiple warehouses, each of which can contain multiple shelves, and each shelf is dedicated to a specific type of goods. The application also supports clear user role management.
+The "Warehouse Management System" is a web application designed to manage and track warehouses, shelves, and types of goods within the warehouse system. The system supports multiple warehouses, each containing multiple shelves, with each shelf dedicated to a specific type of goods. The application also supports clear user role management.
 
 ## Key Features
 
 1. **Warehouse Management:**
-   - The system supports managing multiple warehouses.
+   - Manage multiple warehouses.
    - Each warehouse can contain multiple shelves.
 
 2. **Shelf Management:**
-   - Each warehouse can contain multiple shelves.
+   - Manage multiple shelves within each warehouse.
    - Each shelf is dedicated to a specific type of goods.
-   - Provides the ability to add, update, and delete shelves within each warehouse.
+   - Ability to add, update, and delete shelves within each warehouse.
 
 3. **Goods Management:**
    - Define and manage different types of goods.
    - Link each type of goods to a specific shelf.
 
 4. **User Roles and Permissions:**
-   - The system provides clear role-based access control and functionality for users.
+   - Role-based access control to manage user permissions and functionalities.
    - User roles include:
      - **Admin:** Full access to manage the system, including warehouses, shelves, goods, and user roles.
      - **Warehouse Staff:** Can view and update warehouse and shelf information, and manage goods on shelves.
      - **User:** Can view information about warehouses and shelves but cannot make changes.
 
-## User Roles
+## Technologies Used
 
-- **Admin:**
-  - Manage warehouses and shelves.
-  - Add, update, and delete goods.
-  - Manage users and their permissions.
+- **Backend:** PHP
+  - Server-side scripting language for building the application's logic.
+  - Handles database interactions, user authentication, and authorization.
 
-- **Warehouse Staff:**
-  - View and update warehouse and shelf information.
-  - Manage goods within shelves.
+- **Frontend:** jQuery
+  - JavaScript library for DOM manipulation, event handling, and AJAX requests.
+  - Provides dynamic and interactive features for the user interface.
 
-- **User:**
-  - View information about warehouses and shelves.
-
-## Future Enhancements and Features
-
-- **Reporting and Analytics:**
-  - Create reports and analyze the status of warehouses and goods.
-
-- **Notifications and Alerts:**
-  - Add notification and alert functionalities for users regarding warehouse conditions.
-
-- **Integration with Other Systems:**
-  - Integrate with ERP systems or other management systems.
-
-## Requirements
-
-- Description of the key features and system requirements.
-
+- **Database:** MySQL
+  - Relational database management system to store data related to warehouses, shelves, and goods.
 
